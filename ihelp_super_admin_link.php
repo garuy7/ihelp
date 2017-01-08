@@ -1,7 +1,7 @@
 <?php
 
 	error_reporting(E_ALL ^ E_DEPRECATED);
-	
+
 	include 'ihelp_db.php';
 	include 'ihelp_functions.php';
 
@@ -16,7 +16,7 @@
 	if(isset($_POST["btnLogin"]))
 	{
 		$admin_code = $_POST["admin_code"];
-		
+
 		$query = "SELECT `id`, `user_id`, `user_password`, `user_type` FROM `users` WHERE `user_password` = '$admin_code'";
 		$query_run = mysql_query($query);
 
@@ -27,7 +27,7 @@
 		else
 		{
 			$rows = mysql_fetch_array($query_run);
-			$id = $rows["id"];
+			$id = $rows["user_id"];
 			$user_type = $rows["user_type"];
 
 			if($user_type != 1)
@@ -36,7 +36,7 @@
 			}
 			else
 			{
-				$_SESSION["id"] = $id;
+				$_SESSION["user_id"] = $id;
 				header("location: ihelp_redirect_page.php");
 				exit;
 			}
@@ -49,7 +49,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="img/favicon.png">
-		<!-- Bootstrap CSS -->    
+		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<!-- bootstrap theme -->
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 	</head>
 	<body class="login-img3-body">
 		<div class="container">
-			<form method="POST" class="login-form" action="ihelp_super_admin_link.php" onSubmit="return validateInput()" name="vform">        
+			<form method="POST" class="login-form" action="ihelp_super_admin_link.php" onSubmit="return validateInput()" name="vform">
 				<div class="login-wrap">
 					<p class="login-img"><i class="icon_lock_alt"></i></p>
 						<div class="input-group">
@@ -86,5 +86,5 @@
 
 	</body>
 	<script src="js/ihelp_admin_code_validation.js"></script>
-	
+
 </html>

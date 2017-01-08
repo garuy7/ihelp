@@ -15,7 +15,8 @@
 		$rows=mysql_fetch_array($query_run);
 		$p_fname=$rows['p_fname'];
 		$p_lname=$rows['p_lname'];
-	}	
+
+	}
 
 	if(isset($_POST['btnSubmit']))
 	{
@@ -36,11 +37,8 @@
 			}
 			$per++;
 		}
-
-		
-		
 			echo $perlist;
-		
+
 	}
 ?>
 
@@ -58,12 +56,16 @@
     		div.innerHTML = 'Personnel assigned: <input type="text" name="per_'+per+'" id="nametxt" value="<?php echo $p_fname?> <?php echo $p_lname?>" /> <input type="submit" name="btnPer" value="check" /> <input type="button" onclick="removePer(this)" value="Remove" />';
     		document.getElementById('ass_personnel').appendChild(div);
     	}
-    	
+
     	function removePer(div)
     	{
     		document.getElementById('ass_personnel').removeChild(div.parentNode);
     		per--;
     	}
+
+		$(document).ready(){
+
+		}
     </script>
 </head>
 <body>
@@ -77,9 +79,15 @@
 <input type="text" name="idtxt" id="idtxt" placeholder="Request No." />
 <br />
 <div id="ass_personnel">
-Personnel assigned: 
-<input type="text" name="per_1" id="nametxt" value="<?php echo $p_fname?> <?php echo $p_lname?>" /> 
+Personnel assigned:
+<input type="text" name="per_1" id="nametxt" value="<?php echo $p_fname?> <?php echo $p_lname?>" />
 <input type="button" name="btnPer" id="add_per()" onclick="addPer()" value="Add" />
+<div id="myDropdown" class="dropdown-content">
+    <a href="#">Link 1</a>
+  </div>
+</div>
+<div class="assigned">
+
 </div>
 <br />
 <input type="submit" name="btnSubmit" id="idbtn" value="View">
@@ -92,4 +100,3 @@ Personnel assigned:
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
 </html>
-

@@ -4,9 +4,9 @@
 
 	if(loggedin())
 	{
-		$id = $_SESSION['id'];
+		$id = $_SESSION['user_id'];
 
-		$query = "SELECT `id`, `user_id`, `user_type`, `user_status` FROM `users` WHERE `id` = '$id'";
+		$query = "SELECT `id`, `user_id`, `user_type`, `user_status` FROM `users` WHERE `user_id` = '$id'";
 		$query_run = mysql_query($query);
 		$rows = mysql_fetch_array($query_run);
 		$user_type = $rows["user_type"];

@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_fname=$rows['user_fname'];
@@ -18,7 +18,7 @@
     $user_id=$_GET['user_id'];
     $jo_trans_no=$_GET['jo_trans_no'];
     $jo_status=$_GET['jo_status'];
-    
+
     if($jo_status == 2)
     {
         $query = "SELECT job_request.jo_trans_no, job_request.jo_date_request, job_request.jo_building, job_request.jo_problem_type, job_request.jo_quantity, job_request.jo_description, job_request.jo_user_id, job_request.jo_purpose, job_request.jo_date_actioned, job_request.jo_noted_by, users.user_id, users.user_fname, users.user_lname FROM job_request INNER JOIN users ON job_request.jo_user_id = users.user_id WHERE jo_trans_no = '$jo_trans_no'";
@@ -44,7 +44,7 @@
 
       <title>Homepage</title>
 
-      <!-- Bootstrap CSS -->    
+      <!-- Bootstrap CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- bootstrap theme -->
       <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -69,7 +69,7 @@
             <a href="ihelp_department_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -102,14 +102,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-        </header>      
+        </header>
         <!--header end-->
 
         <!--sidebar start-->
         <aside>
             <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
-                <ul class="sidebar-menu">           
+                <ul class="sidebar-menu">
                     <li class="">
                         <a class="" href="ihelp_department_homepage.php">
                             <i class="icon_house_alt"></i>
@@ -123,7 +123,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>                          
+                            <li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>
                             <li><a class="" href="ihelp_dept_major_request.php">Major Request</a></li>
                         </ul>
                     </li>
@@ -132,7 +132,7 @@
                             <i class="icon_house_alt"></i>
                             <span>Sent Requests</span>
                         </a>
-                    </li>              
+                    </li>
                 </ul>
                 <!-- sidebar menu end-->
             </div>

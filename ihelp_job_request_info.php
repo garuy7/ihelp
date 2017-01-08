@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_fname=$rows['user_fname'];
@@ -23,7 +23,7 @@
 
     	<title>Homepage</title>
 
-    	<!-- Bootstrap CSS -->    
+    	<!-- Bootstrap CSS -->
     	<link href="css/bootstrap.min.css" rel="stylesheet">
     	<!-- bootstrap theme -->
     	<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -48,7 +48,7 @@
             <a href="ihelp_department_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -81,14 +81,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-      	</header>      
+      	</header>
       	<!--header end-->
 
       	<!--sidebar start-->
       	<aside>
           	<div id="sidebar"  class="nav-collapse ">
               	<!-- sidebar menu start-->
-              	<ul class="sidebar-menu">           
+              	<ul class="sidebar-menu">
                   	<li class="">
                       	<a class="" href="ihelp_department_homepage.php">
                           	<i class="icon_house_alt"></i>
@@ -102,10 +102,10 @@
                           	<span class="menu-arrow arrow_carrot-right"></span>
                       	</a>
                       	<ul class="sub">
-                          	<li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>                          
+                          	<li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>
                           	<li><a class="" href="ihelp_dept_major_request.php">Major Request</a></li>
                       	</ul>
-                  	</li>                 
+                  	</li>
               	</ul>
               	<!-- sidebar menu end-->
           	</div>
@@ -150,13 +150,13 @@
                                     <label class="col-sm-2 control-label" >User ID:</label>
                                       <div class="col-sm-2">
                                           <label class="col-sm-2 control-label"></label>
-                                      </div>    
+                                      </div>
                                   </div>
                                   <br />
                                   <div class="row">
                                     <label class="col-lg-2 control-label">Quantity:</label>
                                     <div class="col-sm-2">
-                                      <label class="col-sm-2 control-label"></label>    
+                                      <label class="col-sm-2 control-label"></label>
                                     </div>
                                   </div>
                                   <br />

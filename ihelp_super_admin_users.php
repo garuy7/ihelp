@@ -32,11 +32,11 @@ function send_email($email,$subject,$message)
 
     if(!$mail->send())
     {
-    echo " Email not sent,System encountered an error:".$mail->ErrorInfo;   
+    echo " Email not sent,System encountered an error:".$mail->ErrorInfo;
     }
     else
     {
-        
+
     }
 };
 
@@ -45,12 +45,12 @@ function send_message($number,$message)
     $result=itexmo($number,$message,"EVAND773759_WUET2");
     if ($result == ""){
     echo "iTexMo: No response from server!!!
-    Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.  
-    Please CONTACT US for help. ";  
+    Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.
+    Please CONTACT US for help. ";
     }else if ($result == 0){
-        
+
     }
-    else{   
+    else{
     echo "Error Num ". $result . " was encountered!";
     }
 }
@@ -71,12 +71,12 @@ function itexmo($number,$message,$apicode)
 
     if(loggedin())
     {
-        $id = $_SESSION['id'];
+        $id = $_SESSION['user_id'];
 
-        $query = "SELECT `id`, `user_id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+        $query = "SELECT `id`, `user_id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
         $query_run = mysql_query($query);
         $rows = mysql_fetch_array($query_run);
-        $id = $rows['id'];
+        $id = $rows['user_id'];
         $user_fname = $rows['user_fname'];
         $user_lname = $rows['user_lname'];
     }
@@ -103,20 +103,20 @@ function itexmo($number,$message,$apicode)
                 $query1 = "INSERT INTO `users` (`id`, `user_id`, `user_email`, `user_mobile_no`, `user_type`, `user_password`, `user_about`, `user_saying`, `user_status`) VALUES ('', '$user_id', '$user_email', '$user_mobile_no', '$user_type', '12345', '$user_about', '$user_saying', '2')";
                 //email notification
                 $query_run1 = mysql_query($query1);
-                
+
                 $email = $_POST['user_email'];
                 $mobile_no = $_POST['user_mobile_no'];
                 $subject = "Login Account";
                 $message = "Your User ID is " .$user_id. " and Password is 12345.";
                 send_email($email,$subject,$message);
                 send_message($mobile_no,$message);
-                
+
                 //end email notification
 
                 //end email notification
                 echo "<script>alert('New user added.')</script>";
             }
-        }                        
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -127,7 +127,7 @@ function itexmo($number,$message,$apicode)
 
       <title>Users</title>
 
-      <!-- Bootstrap CSS -->    
+      <!-- Bootstrap CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- bootstrap theme -->
       <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -152,7 +152,7 @@ function itexmo($number,$message,$apicode)
             <a href="ihelp_super_admin_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -185,14 +185,14 @@ function itexmo($number,$message,$apicode)
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-        </header>      
+        </header>
         <!--header end-->
 
         <!--sidebar start-->
         <aside>
             <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
-                <ul class="sidebar-menu">           
+                <ul class="sidebar-menu">
                     <li class="">
                         <a class="" href="ihelp_super_admin_homepage.php">
                             <i class="icon_house_alt"></i>
@@ -227,7 +227,7 @@ function itexmo($number,$message,$apicode)
                             <li><a class="" href="ihelp_super_admin_add_personnel.php">Add Personnel</a></li>
                             <li><a class="" href="">Personnel Info</a></li>
                         </ul>
-                    </li>            
+                    </li>
                 </ul>
                 <!-- sidebar menu end-->
             </div>
@@ -628,14 +628,14 @@ function itexmo($number,$message,$apicode)
                                                         <option value="3">Department Staff</option>
                                                     </select>
                                                 </div>
-                                                <div id="type_error" style="color:red;"></div>  
+                                                <div id="type_error" style="color:red;"></div>
                                             </div>
                                             <div>
                                                 <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                                                <button class="btn btn-success" type="submit" name="btnAdd">Add</button>     
+                                                <button class="btn btn-success" type="submit" name="btnAdd">Add</button>
                                             </div>
                                         </div>
-                                    </form>  
+                                    </form>
                                 </div>
                             </div>
                         </div>

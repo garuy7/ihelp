@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_fname=$rows['user_fname'];
@@ -23,7 +23,7 @@
       $p_mob_no = $_POST['p_mob_no'];
       $p_position = $_POST['p_position'];
       $p_build_assign = $_POST['p_build_assign'];
-      
+
       $query0 = "SELECT * FROM `personnel` WHERE `p_id` = '$p_id'";
       $query_run0 = mysql_query($query0);
 
@@ -38,7 +38,7 @@
 
         echo "<script>alert('New Personnel Successfully added!');</script>";
       }
-      
+
     }
   }
 ?>
@@ -52,7 +52,7 @@
 
     	<title>Homepage</title>
 
-    	<!-- Bootstrap CSS -->    
+    	<!-- Bootstrap CSS -->
     	<link href="css/bootstrap.min.css" rel="stylesheet">
     	<!-- bootstrap theme -->
     	<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -77,7 +77,7 @@
             <a href="ihelp_super_admin_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -110,14 +110,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-      	</header>      
+      	</header>
       	<!--header end-->
 
       	<!--sidebar start-->
       	<aside>
           	<div id="sidebar"  class="nav-collapse ">
               	<!-- sidebar menu start-->
-              	<ul class="sidebar-menu">           
+              	<ul class="sidebar-menu">
                   	<li class="">
                         <a class="" href="ihelp_super_admin_homepage.php">
                             <i class="icon_house_alt"></i>
@@ -149,10 +149,10 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="ihelp_super_admin_add_personnel.php">Add Personnel</a></li>                          
+                            <li><a class="" href="ihelp_super_admin_add_personnel.php">Add Personnel</a></li>
                             <li><a class="" href="">Personnel Info</a></li>
                         </ul>
-                    </li> 
+                    </li>
               	</ul>
               	<!-- sidebar menu end-->
           	</div>
@@ -210,7 +210,7 @@
                                       <div class="col-sm-7">
                                           <input class="form-control" name="p_address" type="text" placeholder="Address">
                                           <div id="addr_error" style="color: red;"></div>
-                                      </div> 
+                                      </div>
                                   </div>
                                   <br />
                                   <div class="row">

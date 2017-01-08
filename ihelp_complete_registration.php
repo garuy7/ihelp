@@ -30,7 +30,7 @@
                 if(mysql_num_rows($query_run1) == 1)
                 {
                     $rows = mysql_fetch_array($query_run1);
-                    $id = $rows["id"];
+                    $id = $rows["user_id"];
 
                         if($user_password == $rows["user_password"])
                         {
@@ -56,7 +56,7 @@
 
     <title>Complete Registration</title>
 
-    <!-- Bootstrap CSS -->    
+    <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -84,7 +84,7 @@
 
     <div class="container">
 
-      <form method="POST" class="login-form" onsubmit="return validateComReg()" name="vform">        
+      <form method="POST" class="login-form" onsubmit="return validateComReg()" name="vform">
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">

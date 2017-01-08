@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT * FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT * FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_id=$rows['user_id'];
@@ -32,7 +32,7 @@
     }
 
     if($user_gender == 'M')
-    { 
+    {
       $user_gender = "Male";
     }
     else
@@ -79,7 +79,7 @@
 
       <title>Homepage</title>
 
-      <!-- Bootstrap CSS -->    
+      <!-- Bootstrap CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- bootstrap theme -->
       <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -104,7 +104,7 @@
             <a href="ihelp_department_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -137,14 +137,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-        </header>      
+        </header>
         <!--header end-->
 
         <!--sidebar start-->
         <aside>
             <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
-                <ul class="sidebar-menu">           
+                <ul class="sidebar-menu">
                     <li class="">
                         <a class="" href="ihelp_department_homepage.php">
                             <i class="icon_house_alt"></i>
@@ -158,7 +158,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>                          
+                            <li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>
                             <li><a class="" href="ihelp_dept_major_request.php">Major Request</a></li>
                         </ul>
                     </li>
@@ -167,7 +167,7 @@
                             <i class="icon_house_alt"></i>
                             <span>Sent Requests</span>
                         </a>
-                    </li>            
+                    </li>
                 </ul>
                 <!-- sidebar menu end-->
             </div>
@@ -187,7 +187,7 @@
                         <div class="profile-widget profile-widget-info">
                             <div class="panel-body">
                                 <div class="col-lg-2 col-sm-2">
-                                    <h4><?php echo $user_fname; ?> <?php echo $user_lname?></h4>               
+                                    <h4><?php echo $user_fname; ?> <?php echo $user_lname?></h4>
                                     <div class="follow-ava">
                                         <img src="img/profile-widget-avatar.jpg" alt="">
                                     </div>
@@ -234,7 +234,7 @@
                                                     </div>
                                                     <div class="bio-row">
                                                       <p><span>Last Name :</span> <?php echo $user_lname; ?></p>
-                                                    </div>                                              
+                                                    </div>
                                                     <div class="bio-row">
                                                         <p><span>Birthday :</span> <?php echo date('F j, Y', strtotime($user_birthdate)); ?></p>
                                                     </div>
@@ -257,7 +257,7 @@
                                             </div>
                                         </section>
                                         <section>
-                                            <div class="row">                                              
+                                            <div class="row">
                                             </div>
                                         </section>
                                     </div>
@@ -272,7 +272,7 @@
                                                             <input type="text" class="form-control" name="user_id" readonly="readonly" value="<?php echo $user_id; ?>" >
                                                             <div id="id_error" style="color: red;"></div>
                                                         </div>
-                                                    </div>                                           
+                                                    </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 control-label">First Name</label>
                                                         <div class="col-lg-6">

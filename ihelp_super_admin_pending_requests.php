@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_fname=$rows['user_fname'];
@@ -23,7 +23,7 @@
 
       <title>Homepage</title>
 
-      <!-- Bootstrap CSS -->    
+      <!-- Bootstrap CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- bootstrap theme -->
       <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -48,7 +48,7 @@
             <a href="ihelp_super_admin_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -81,14 +81,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-        </header>      
+        </header>
         <!--header end-->
 
         <!--sidebar start-->
         <aside>
             <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
-                <ul class="sidebar-menu">           
+                <ul class="sidebar-menu">
                     <li class="">
                         <a class="" href="ihelp_super_admin_homepage.php">
                             <i class="icon_house_alt"></i>
@@ -123,7 +123,7 @@
                             <li><a class="" href="ihelp_super_admin_add_personnel.php">Add Personnel</a></li>
                             <li><a class="" href="">Personnel Info</a></li>
                         </ul>
-                    </li>            
+                    </li>
                 </ul>
                 <!-- sidebar menu end-->
             </div>
@@ -163,7 +163,7 @@
                                     </tr>
                                     <?php
                                         $count=1;
-                                            while ($rows=mysql_fetch_array($query_run)) 
+                                            while ($rows=mysql_fetch_array($query_run))
                                             {
                                     ?>
                                                 <tr>
@@ -175,14 +175,14 @@
                                                     <td><?php echo $rows['jo_problem_type']?></td>
                                                     <td><?php echo $rows['jo_building']?></td>
                                                     <td><?php echo $rows['jo_quantity']?></td>
-                                                    <td><?php echo $rows['user_fname']?> 
+                                                    <td><?php echo $rows['user_fname']?>
                                                         <?php echo $rows['user_lname']?>
                                                     </td>
                                                     <td><?php echo $rows['jo_date_request']?></td>
                                                     <td><?php echo $rows['user_department']?></td>
                                                     <td>
-                                                        <?php 
-                                                            if($rows['jo_status'] == 2) 
+                                                        <?php
+                                                            if($rows['jo_status'] == 2)
                                                             {
                                                                 echo "Pending";
                                                             }

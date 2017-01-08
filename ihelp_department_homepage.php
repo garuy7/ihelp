@@ -4,9 +4,9 @@
 
   if(loggedin())
   {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['user_id'];
 
-    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `id` = '$id'";
+    $query = "SELECT `id`, `user_fname`, `user_lname` FROM `users` WHERE `user_id` = '$id'";
     $query_run = mysql_query($query);
     $rows = mysql_fetch_array($query_run);
     $user_fname=$rows['user_fname'];
@@ -23,7 +23,7 @@
 
     	<title>Homepage</title>
 
-    	<!-- Bootstrap CSS -->    
+    	<!-- Bootstrap CSS -->
     	<link href="css/bootstrap.min.css" rel="stylesheet">
     	<!-- bootstrap theme -->
     	<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -48,7 +48,7 @@
             <a href="ihelp_department_homepage.php" class="logo">i <span class="lite">Help</span></a>
             <!--logo end-->
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     <!-- user login dropdown start-->
@@ -81,14 +81,14 @@
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-      	</header>      
+      	</header>
       	<!--header end-->
 
       	<!--sidebar start-->
       	<aside>
           	<div id="sidebar"  class="nav-collapse ">
               	<!-- sidebar menu start-->
-              	<ul class="sidebar-menu">           
+              	<ul class="sidebar-menu">
                   	<li class="">
                       	<a class="" href="ihelp_department_homepage.php">
                           	<i class="icon_house_alt"></i>
@@ -102,7 +102,7 @@
                           	<span class="menu-arrow arrow_carrot-right"></span>
                       	</a>
                       	<ul class="sub">
-                          	<li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>                          
+                          	<li><a class="" href="ihelp_dept_minor_request.php">Minor Request</a></li>
                           	<li><a class="" href="ihelp_dept_major_request.php">Major Request</a></li>
                       	</ul>
                   	</li>
@@ -111,7 +111,7 @@
                             <i class="icon_house_alt"></i>
                             <span>Sent Requests</span>
                         </a>
-                    </li>              
+                    </li>
               	</ul>
               	<!-- sidebar menu end-->
           	</div>
@@ -130,6 +130,36 @@
               	Page content goes here
               	<!-- page end-->
           	</section>
+
+			<!---Chatbox content here--->
+
+    <div class="chat_box">
+  	<div class="chat_head" onclick="getUsers()"> Chat Box</div>
+  	<div class="chat_body">
+  	<div class="user" id="1" onclick="getMessages()"> Freedom Genesis</div>
+  	</div>
+    </div>
+
+    <div class="msg_box" style="right:290px">
+    	<div class="msg_head">
+			&nbsp;
+        <div class="recipient">
+			Hello
+        </div>
+    	<div class="close">x</div>
+    	</div>
+    	<div class="msg_wrap">
+    		<div class="msg_body">
+				<div class="msg_push"></div>
+    		</div>
+    </div>
+    	<div class="msg_footer">
+    	<form name="messageForm">
+    	<textarea class="msg_input" rows="4" name="msg"></textarea>
+    	</form>
+    	</div>
+    </div>
+	<!---chatbox ends -->
       	</section>
       	<!--main content end-->
   	</section>
@@ -141,5 +171,6 @@
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
+	<script src="js/ihelp_custom_scripts.js"></script>
   </body>
 </html>
